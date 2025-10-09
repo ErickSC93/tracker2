@@ -1,0 +1,52 @@
+/**
+ * @fileoverview Firestore Security Rules for Prototyping.
+ *
+ * Core Philosophy:
+ * This ruleset prioritizes rapid prototyping by focusing on authorization and skipping data validation.
+ * It implements public read access and restricts write access to authenticated users for all data.
+ *
+ * Data Structure:
+ * - /equipments/{equipmentId}: Stores individual equipment documents, publicly readable.
+ * - /lists/{listId}: Stores a singleton document containing dynamic lists, publicly readable.
+ *
+ * Key Security Decisions:
+ * - Public read access is enabled for both collections to allow for easy data exploration.
+ * - Write access is restricted to authenticated users to prevent unauthorized modifications.
+ * - Data validation is omitted to accelerate development.
+ */
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    /**
+     * @description Grants public read access and restricts write access to authenticated users for equipment documents.
+     * @path /equipments/{equipmentId}
+     * @allow (get, list): Public access for all users.
+     * @allow (create, update, delete): Only authenticated users can modify equipment documents.
+     * @deny (create, update, delete): Unauthenticated users cannot modify equipment documents.
+     * @principle Enables public read access while restricting write access to authenticated users.
+     */
+    match /equipments/{equipmentId} {
+      allow get, list: if true;
+      allow create, update, delete: if isSignedIn();
+    }
+
+    /**
+     * @description Grants public read access and restricts write access to authenticated users for the lists singleton.
+     * @path /lists/{listId}
+     * @allow (get, list): Public access for all users.
+     * @allow (create, update, delete): Only authenticated users can modify the lists singleton.
+     * @deny (create, update, delete): Unauthenticated users cannot modify the lists singleton.
+     * @principle Enables public read access while restricting write access to authenticated users.
+     */
+    match /lists/{listId} {
+      allow get, list: if true;
+      allow create, update, delete: if isSignedIn();
+    }
+
+    // Helper function to check if the user is signed in
+    function isSignedIn() {
+      return request.auth != null;
+    }
+  }
+}

@@ -1,0 +1,344 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Código Fuente Completo - CaliTrack</title>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.6; margin: 0; padding: 0; background-color: #f8f9fa; color: #212529; }
+        #sidebar { position: fixed; top: 0; left: 0; width: 300px; height: 100%; background-color: #e9ecef; padding: 20px; overflow-y: auto; border-right: 1px solid #dee2e6; }
+        #content { margin-left: 320px; padding: 20px; }
+        h1, h2 { color: #0d6efd; border-bottom: 2px solid #0d6efd; padding-bottom: 10px; }
+        h2 { font-size: 1.5em; margin-top: 40px; }
+        pre { background-color: #282c34; color: #abb2bf; padding: 15px; border-radius: 8px; overflow-x: auto; font-family: "Fira Code", "Courier New", monospace; font-size: 14px; }
+        code { font-family: "Fira Code", "Courier New", monospace; }
+        .file-path { font-weight: bold; color: #343a40; margin-bottom: 10px; display: block; }
+        #sidebar ul { list-style: none; padding: 0; }
+        #sidebar li a { display: block; padding: 8px 10px; color: #0d6efd; text-decoration: none; border-radius: 4px; }
+        #sidebar li a:hover { background-color: #dee2e6; }
+        .code-block { margin-bottom: 30px; }
+        .token.comment { color: #5c6370; }
+        .token.string { color: #98c379; }
+        .token.keyword { color: #c678dd; }
+        .token.function { color: #61afef; }
+        .token.tag { color: #e06c75; }
+        .token.attr-name { color: #d19a66; }
+        .token.attr-value { color: #98c379; }
+        .token.punctuation { color: #abb2bf; }
+        .token.operator { color: #56b6c2; }
+        .token.number { color: #d19a66; }
+        .token.boolean { color: #d19a66; }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/themes/prism-okaidia.min.css">
+</head>
+<body>
+    <div id="sidebar">
+        <h2>Archivos del Proyecto</h2>
+        <ul>
+            <li><a href="#file-0">.env</a></li>
+            <li><a href="#file-1">README.md</a></li>
+            <li><a href="#file-2">apphosting.yaml</a></li>
+            <li><a href="#file-3">calitrack-source-code.html</a></li>
+            <li><a href="#file-4">components.json</a></li>
+            <li><a href="#file-5">docs/SETUP_ADMIN_SDK.md</a></li>
+            <li><a href="#file-6">docs/backend.json</a></li>
+            <li><a href="#file-7">next.config.ts</a></li>
+            <li><a href="#file-8">package.json</a></li>
+            <li><a href="#file-9">src/ai/dev.ts</a></li>
+            <li><a href="#file-10">src/ai/genkit.ts</a></li>
+            <li><a href="#file-11">src/app/api/admin/users/route.ts</a></li>
+            <li><a href="#file-12">src/app/dashboard/admin/_components/registration-settings.tsx</a></li>
+            <li><a href="#file-13">src/app/dashboard/admin/_components/user-management.tsx</a></li>
+            <li><a href="#file-14">src/app/dashboard/admin/page.tsx</a></li>
+            <li><a href="#file-15">src/app/dashboard/deliver/_components/delivery-handler.tsx</a></li>
+            <li><a href="#file-16">src/app/dashboard/deliver/page.tsx</a></li>
+            <li><a href="#file-17">src/app/dashboard/export/_components/export-manager.tsx</a></li>
+            <li><a href="#file-18">src/app/dashboard/export/page.tsx</a></li>
+            <li><a href="#file-19">src/app/dashboard/layout.tsx</a></li>
+            <li><a href="#file-20">src/app/dashboard/page.tsx</a></li>
+            <li><a href="#file-21">src/app/dashboard/register/_components/equipment-form.tsx</a></li>
+            <li><a href="#file-22">src/app/dashboard/register/page.tsx</a></li>
+            <li><a href="#file-23">src/app/dashboard/settings/page.tsx</a></li>
+            <li><a href="#file-24">src/app/dashboard/track/_components/equipment-card.tsx</a></li>
+            <li><a href="#file-25">src/app/dashboard/track/_components/equipment-search.tsx</a></li>
+            <li><a href="#file-26">src/app/dashboard/track/page.tsx</a></li>
+            <li><a href="#file-27">src/app/dashboard/users/page.tsx</a></li>
+            <li><a href="#file-28">src/app/equipment/[id]/_components/ObservationsPanel.tsx</a></li>
+            <li><a href="#file-29">src/app/equipment/[id]/_components/QrPanel.tsx</a></li>
+            <li><a href="#file-30">src/app/equipment/[id]/_components/QualityValidationPanel.tsx</a></li>
+            <li><a href="#file-31">src/app/equipment/[id]/_components/TechnicianConfirmationPanel.tsx</a></li>
+            <li><a href="#file-32">src/app/equipment/[id]/page.tsx</a></li>
+            <li><a href="#file-33">src/app/globals.css</a></li>
+            <li><a href="#file-34">src/app/layout.tsx</a></li>
+            <li><a href="#file-35">src/app/login/page.tsx</a></li>
+            <li><a href="#file-36">src/app/page.tsx</a></li>
+            <li><a href="#file-37">src/app/providers.tsx</a></li>
+            <li><a href="#file-38">src/components/FirebaseErrorListener.tsx</a></li>
+            <li><a href="#file-39">src/components/app/data-sync.tsx</a></li>
+            <li><a href="#file-40">src/components/app/sidebar-nav.tsx</a></li>
+            <li><a href="#file-41">src/components/app/status-badge.tsx</a></li>
+            <li><a href="#file-42">src/components/app/status-timeline.tsx</a></li>
+            <li><a href="#file-43">src/components/app/user-nav.tsx</a></li>
+            <li><a href="#file-44">src/components/logo.tsx</a></li>
+            <li><a href="#file-45">src/components/page-header.tsx</a></li>
+            <li><a href="#file-46">src/components/ui/accordion.tsx</a></li>
+            <li><a href="#file-47">src/components/ui/alert-dialog.tsx</a></li>
+            <li><a href="#file-48">src/components/ui/alert.tsx</a></li>
+            <li><a href="#file-49">src/components/ui/avatar.tsx</a></li>
+            <li><a href="#file-50">src/components/ui/badge.tsx</a></li>
+            <li><a href="#file-51">src/components/ui/button.tsx</a></li>
+            <li><a href="#file-52">src/components/ui/calendar.tsx</a></li>
+            <li><a href="#file-53">src/components/ui/card.tsx</a></li>
+            <li><a href="#file-54">src/components/ui/carousel.tsx</a></li>
+            <li><a href="#file-55">src/components/ui/chart.tsx</a></li>
+            <li><a href="#file-56">src/components/ui/checkbox.tsx</a></li>
+            <li><a href="#file-57">src/components/ui/collapsible.tsx</a></li>
+            <li><a href="#file-58">src/components/ui/combobox.tsx</a></li>
+            <li><a href="#file-59">src/components/ui/command.tsx</a></li>
+            <li><a href="#file-60">src/components/ui/dialog.tsx</a></li>
+            <li><a href="#file-61">src/components/ui/dropdown-menu.tsx</a></li>
+            <li><a href="#file-62">src/components/ui/form.tsx</a></li>
+            <li><a href="#file-63">src/components/ui/input.tsx</a></li>
+            <li><a href="#file-64">src/components/ui/label.tsx</a></li>
+            <li><a href="#file-65">src/components/ui/menubar.tsx</a></li>
+            <li><a href="#file-66">src/components/ui/popover.tsx</a></li>
+            <li><a href="#file-67">src/components/ui/progress.tsx</a></li>
+            <li><a href="#file-68">src/components/ui/radio-group.tsx</a></li>
+            <li><a href="#file-69">src/components/ui/scroll-area.tsx</a></li>
+            <li><a href="#file-70">src/components/ui/select.tsx</a></li>
+            <li><a href="#file-71">src/components/ui/separator.tsx</a></li>
+            <li><a href="#file-72">src/components/ui/sheet.tsx</a></li>
+            <li><a href="#file-73">src/components/ui/sidebar.tsx</a></li>
+            <li><a href="#file-74">src/components/ui/skeleton.tsx</a></li>
+            <li><a href="#file-75">src/components/ui/slider.tsx</a></li>
+            <li><a href="#file-76">src/components/ui/switch.tsx</a></li>
+            <li><a href="#file-77">src/components/ui/table.tsx</a></li>
+            <li><a href="#file-78">src/components/ui/tabs.tsx</a></li>
+            <li><a href="#file-79">src/components/ui/textarea.tsx</a></li>
+            <li><a href="#file-80">src/components/ui/toast.tsx</a></li>
+            <li><a href="#file-81">src/components/ui/toaster.tsx</a></li>
+            <li><a href="#file-82">src/components/ui/tooltip.tsx</a></li>
+            <li><a href="#file-83">src/contexts/equipment-context.tsx</a></li>
+            <li><a href="#file-84">src/docs/backend.json</a></li>
+            <li><a href="#file-85">src/firebase/client-provider.tsx</a></li>
+            <li><a href="#file-86">src/firebase/config.ts</a></li>
+            <li><a href="#file-87">src/firebase/error-emitter.ts</a></li>
+            <li><a href="#file-88">src/firebase/errors.ts</a></li>
+            <li><a href="#file-89">src/firebase/firestore/use-collection.tsx</a></li>
+            <li><a href="#file-90">src/firebase/firestore/use-doc.tsx</a></li>
+            <li><a href="#file-91">src/firebase/index.ts</a></li>
+            <li><a href="#file-92">src/firebase/non-blocking-login.tsx</a></li>
+            <li><a href="#file-93">src/firebase/non-blocking-updates.tsx</a></li>
+            <li><a href="#file-94">src/firebase/provider.tsx</a></li>
+            <li><a href="#file-95">src/hooks/use-alerts.ts</a></li>
+            <li><a href="#file-96">src/hooks/use-mobile.tsx</a></li>
+            <li><a href="#file-97">src/hooks/use-toast.ts</a></li>
+            <li><a href="#file-98">src/lib/data-seed.ts</a></li>
+            <li><a href="#file-99">src/lib/data.ts</a></li>
+            <li><a href="#file-100">src/lib/placeholder-images.json</a></li>
+            <li><a href="#file-101">src/lib/placeholder-images.ts</a></li>
+            <li><a href="#file-102">src/lib/types.ts</a></li>
+            <li><a href="#file-103">src/lib/utils.ts</a></li>
+            <li><a href="#file-104">src/types/jsqr.d.ts</a></li>
+            <li><a href="#file-105">tailwind.config.ts</a></li>
+            <li><a href="#file-106">tsconfig.json</a></li>
+            <li><a href="#file-107">workspace/.env</a></li>
+        </ul>
+    </div>
+
+    <div id="content">
+        <h1>Código Fuente Completo de "CaliTrack"</h1>
+        <p>Este documento contiene el código de todos los archivos del proyecto. Puedes usar el menú de la izquierda para navegar o desplazarte hacia abajo.</p>
+
+        <!-- FILE: .env -->
+        <div id="file-0" class="code-block">
+            <span class="file-path">.env</span>
+            <pre><code class="language-bash">
+</code></pre>
+        </div>
+
+        <!-- FILE: README.md -->
+        <div id="file-1" class="code-block">
+            <span class="file-path">README.md</span>
+            <pre><code class="language-markdown"># Firebase Studio
+
+This is a NextJS starter in Firebase Studio.
+
+To get started, take a look at src/app/page.tsx.
+
+## Setting up Admin Features
+
+To enable user management features in the admin panel, you need to configure your Firebase Admin SDK credentials. Follow the guide here: [docs/SETUP_ADMIN_SDK.md](./docs/SETUP_ADMIN_SDK.md).
+</code></pre>
+        </div>
+
+        <!-- FILE: apphosting.yaml -->
+        <div id="file-2" class="code-block">
+            <span class="file-path">apphosting.yaml</span>
+            <pre><code class="language-yaml"># Settings to manage and configure a Firebase App Hosting backend.
+# https://firebase.google.com/docs/app-hosting/configure
+
+runConfig:
+  # Increase this value if you'd like to automatically spin up
+  # more instances in response to increased traffic.
+  maxInstances: 1
+</code></pre>
+        </div>
+
+        <!-- FILE: calitrack-source-code.html -->
+        <div id="file-3" class="code-block">
+            <span class="file-path">calitrack-source-code.html</span>
+            <pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;es&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+    &lt;title&gt;C&oacute;digo Fuente Completo - CaliTrack&lt;/title&gt;
+    &lt;style&gt;
+        body { font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif; line-height: 1.6; margin: 0; padding: 0; background-color: #f8f9fa; color: #212529; }
+        #sidebar { position: fixed; top: 0; left: 0; width: 300px; height: 100%; background-color: #e9ecef; padding: 20px; overflow-y: auto; border-right: 1px solid #dee2e6; }
+        #content { margin-left: 320px; padding: 20px; }
+        h1, h2 { color: #0d6efd; border-bottom: 2px solid #0d6efd; padding-bottom: 10px; }
+        h2 { font-size: 1.5em; margin-top: 40px; }
+        pre { background-color: #282c34; color: #abb2bf; padding: 15px; border-radius: 8px; overflow-x: auto; font-family: &quot;Fira Code&quot;, &quot;Courier New&quot;, monospace; font-size: 14px; }
+        code { font-family: &quot;Fira Code&quot;, &quot;Courier New&quot;, monospace; }
+        .file-path { font-weight: bold; color: #343a40; margin-bottom: 10px; display: block; }
+        #sidebar ul { list-style: none; padding: 0; }
+        #sidebar li a { display: block; padding: 8px 10px; color: #0d6efd; text-decoration: none; border-radius: 4px; }
+        #sidebar li a:hover { background-color: #dee2e6; }
+        .code-block { margin-bottom: 30px; }
+        .token.comment { color: #5c6370; }
+        .token.string { color: #98c379; }
+        .token.keyword { color: #c678dd; }
+        .token.function { color: #61afef; }
+        .token.tag { color: #e06c75; }
+        .token.attr-name { color: #d19a66; }
+        .token.attr-value { color: #98c379; }
+        .token.punctuation { color: #abb2bf; }
+        .token.operator { color: #56b6c2; }
+        .token.number { color: #d19a66; }
+        .token.boolean { color: #d19a66; }
+    &lt;/style&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/themes/prism-okaidia.min.css&quot;&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;div id=&quot;sidebar&quot;&gt;
+        &lt;h2&gt;Archivos del Proyecto&lt;/h2&gt;
+        &lt;ul&gt;
+            &lt;li&gt;&lt;a href=&quot;#file-0&quot;&gt;.env&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&quot;#file-1&quot;&gt;README.md&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&quot;#file-2&quot;&gt;apphosting.yaml&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&quot;#file-3&quot;&gt;calitrack-source-code.html&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&quot;#file-4&quot;&gt;components.json&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&quot;#file-5&quot;&gt;docs/SETUP_ADMIN_SDK.md&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&quot;#file-6&quot;&gt;docs/backend.json&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&quot;#file-7&quot;&gt;next.config.ts&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&quot;#file-8&quot;&gt;package.json&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&quot;#file-9&quot;&gt;src/ai/dev.ts&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&quot;#file-10&quot;&gt;src/ai/genkit.ts&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&quot;#file-11&quot;&gt;src/app/api/admin/users/route.ts&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&quot;#file-12&quot;&gt;src/app/dashboard/admin/_components/registration-settings.tsx&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&quot;#file-13&quot;&gt;src/app/dashboard/admin/_components/user-management.tsx&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&quot;#file-14&quot;&gt;src/app/dashboard/admin/page.tsx&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&quot;#file-15&quot;&gt;src/app/dashboard/deliver/_components/delivery-handler.tsx&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&quot;#file-16&quot;&gt;src/app/dashboard/deliver/page.tsx&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&quot;#file-17&quot;&gt;src/app/dashboard/export/_components/export-manager.tsx&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&quot;#file-18&quot;&gt;src/app/dashboard/export/page.tsx&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&quot;#file-19&quot;&gt;src/app/dashboard/layout.tsx&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&quot;#file-20&quot;&gt;src/app/dashboard/page.tsx&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&quot;#file-21&quot;&gt;src/app/dashboard/register/_components/equipment-form.tsx&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&quot;#file-22&quot;&gt;src/app/dashboard/register/page.tsx&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&quot;#file-23&quot;&gt;src/app/dashboard/settings/page.tsx&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&quot;#file-24&quot;&gt;src/app/dashboard/track/_components/equipment-card.tsx&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&quot;#file-25&quot;&gt;src/app/dashboard/track/_components/equipment-search.tsx&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&quot;#file-26&quot;&gt;src/app/dashboard/track/page.tsx&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&quot;#file-27&quot;&gt;src/app/dashboard/users/page.tsx&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&quot;#file-28&quot;&gt;src/app/equipment/[id]/_components/ObservationsPanel.tsx&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&quot;#file-29&quot;&gt;src/app/equipment/[id]/_components/QrPanel.tsx&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&quot;#file-30&quot;&gt;src/app/equipment/[id]/_components/QualityValidationPanel.tsx&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&quot;#file-31&quot;&gt;src/app/equipment/[id]/_components/TechnicianConfirmationPanel.tsx&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&quot;#file-32&quot;&gt;src/app/equipment/[id]/page.tsx&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&quot;#file-33&quot;&gt;src/app/globals.css&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&quot;#file-34&quot;&gt;src/app/layout.tsx&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&quot;#file-35&quot;&gt;src/app/login/page.tsx&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&quot;#file-36&quot;&gt;src/app/page.tsx&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&quot;#file-37&quot;&gt;src/app/providers.tsx&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&quot;#file-38&quot;&gt;src/components/FirebaseErrorListener.tsx&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&quot;#file-39&quot;&gt;src/components/app/data-sync.tsx&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&quot;#file-40&quot;&gt;src/components/app/sidebar-nav.tsx&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&quot;#file-41&quot;&gt;src/components/app/status-badge.tsx&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&quot;#file-42&quot;&gt;src/components/app/status-timeline.tsx&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&quot;#file-43&quot;&gt;src/components/app/user-nav.tsx&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&quot;#file-44&quot;&gt;src/components/logo.tsx&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&quot;#file-45&quot;&gt;src/components/page-header.tsx&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&quot;#file-46&quot;&gt;src/components/ui/accordion.tsx&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&quot;#file-47&quot;&gt;src/components/ui/alert-dialog.tsx&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&quot;#file-48&quot;&gt;src/components/ui/alert.tsx&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&quot;#file-49&quot;&gt;src/components/ui/avatar.tsx&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&quot;#file-50&quot;&gt;src/components/ui/badge.tsx&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&quot;#file-51&quot;&gt;src/components/ui/button.tsx&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&quot;#file-52&quot;&gt;src/components/ui/calendar.tsx&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&quot;#file-53&quot;&gt;src/components/ui/card.tsx&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&quot;#file-54&quot;&gt;src/components/ui/carousel.tsx&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&quot;#file-55&quot;&gt;src/components/ui/chart.tsx&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&quot;#file-56&quot;&gt;src/components/ui/checkbox.tsx&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&quot;#file-57&quot;&gt;src/components/ui/collapsible.tsx&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&quot;#file-58&quot;&gt;src/components/ui/combobox.tsx&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&quot;#file-59&quot;&gt;src/components/ui/command.tsx&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&quot;#file-60&quot;&gt;src/components/ui/dialog.tsx&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&quot;#file-61&quot;&gt;src/components/ui/dropdown-menu.tsx&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&quot;#file-62&quot;&gt;src/components/ui/form.tsx&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&quot;#file-63&quot;&gt;src/components/ui/input.tsx&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&quot;#file-64&quot;&gt;src/components/ui/label.tsx&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&quot;#file-65&quot;&gt;src/components/ui/menubar.tsx&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&quot;#file-66&quot;&gt;src/components/ui/popover.tsx&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&quot;#file-67&quot;&gt;src/components/ui/progress.tsx&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&quot;#file-68&quot;&gt;src/components/ui/radio-group.tsx&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&quot;#file-69&quot;&gt;src/components/ui/scroll-area.tsx&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&quot;#file-70&quot;&gt;src/components/ui/select.tsx&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&quot;#file-71&quot;&gt;src/components/ui/separator.tsx&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&quot;#file-72&quot;&gt;src/components/ui/sheet.tsx&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&quot;#file-73&quot;&gt;src/components/ui/sidebar.tsx&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&quot;#file-74&quot;&gt;src/components/ui/skeleton.tsx&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&quot;#file-75&quot;&gt;src/components/ui/slider.tsx&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&quot;#file-76&quot;&gt;src/components/ui/switch.tsx&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&quot;#file-77&quot;&gt;src/components/ui/table.tsx&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&quot;#file-78&quot;&gt;src/components/ui/tabs.tsx&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&quot;#file-79&quot;&gt;src/components/ui/textarea.tsx&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&quot;#file-80&quot;&gt;src/components/ui/toast.tsx&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&quot;#file-81&quot;&gt;src/components/ui/toaster.tsx&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&quot;#file-82&quot;&gt;src/components/ui/tooltip.tsx&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&quot;#file-83&quot;&gt;src/contexts/equipment-context.tsx&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&quot;#file-84&quot;&gt;src/docs/backend.json&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&quot;#file-85&quot;&gt;src/firebase/client-provider.tsx&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&quot;#file-86&quot;&gt;src/firebase/config.ts&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&quot;#file-87&quot;&gt;src/firebase/error-emitter.ts&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&quot;#file-88&quot;&gt;src/firebase/errors.ts&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&quot;#file-89&quot;&gt;src/firebase/firestore/use-collection.tsx&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&quot;#file-90&quot;&gt;src/firebase/firestore/use-doc.tsx&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&quot;#file-91&quot;&gt;src/firebase/index.ts&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&quot;#file-92&quot;&gt;src/firebase/non-blocking-login.tsx&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&quot;#file-93&quot;&gt;src/firebase/non-blocking-updates.tsx&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&quot;#file-94&quot;&gt;src/firebase/provider.tsx&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&quot;#file-95&quot;&gt;src/hooks/use-alerts.ts&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&quot;#file-96&quot;&gt;src/hooks/use-mobile.tsx&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&quot;#file-97&quot;&gt;src/hooks/use-toast.ts&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&quot;#file-98&quot;&gt;src/lib/data-seed.ts&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&quot;#file-99&quot;&gt;src/lib/data.ts&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&quot;#file-100&quot;&gt;src/lib/placeholder-images.json&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&quot;#file-101&quot;&gt;src/lib/placeholder-images.ts&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&quot;#file-102&quot;&gt;src/lib/types.ts&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&quot;#file-103&quot;&gt;src/lib/utils.ts&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&quot;#file-104&quot;&gt;src/types/jsqr.d.ts&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&quot;#file-105&quot;&gt;tailwind.config.ts&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&quot;#file-106&quot;&gt;tsconfig.json&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&quot;#file-107&quot;&gt;workspace/.env&lt;/a&gt;&lt;/li&gt;
+        </ul>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/plugins/autoloader/prism-autoloader.min.js"></script>
+</body>
+</html>
+    
